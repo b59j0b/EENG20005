@@ -1,73 +1,86 @@
 java c
-EENG20005 Coursework Script
-Overview 
-Submission 
-•         Summative submission: A technical   report   in Week   23 accompanied   by   a   package   of   all simulation   models and   codes.
-Laboratory sessions 
-Report elements 
-A.       Description of   approach/methodology
-B.         Mathematical working
-C.       Simulation   waveform.
-D.       Diagrams -   phasor diagram,   circuit   diagram
-E.         Results   in data   points   presented   in   a table or   a visualised graph   (e.g.   curve)
-F.         Analysis and   discussion of   results
-Part 3.   Ferromagnetic Actuator 
-Summary 
-Numerical and   analytical   modelling and simulation of   a   linear ferromagnetic   actuator.
-Learning outcomes 
-1.       Learning   how to   use   FEA techniques   (such   as   FEMM) to   model   a   linear   ferromagnetic   actuator and   simulate   its electromagnetic characteristics.
-2.       Learning   how to   build   analytical   models for   the   linear   ferromagnetic   actuator.
-3.       Learning   how to   calculate the   inductance   of   the   actuator   by   using   both   the   FEA   technique   and the   analytical   method.
-4.       Learning   how to   calculate the   electromagnetic   force   by   using   the   energy   method.
-Tools 
-FEMM and   MATLAB   2024a.
-Learning   materials 
-1.       An   incomplete   FEA   model   draft   in the   EMLab file   named “   Draft_construct_actuator   ”.   (students   need to   build   a   FEA   model   based on   it.)
-2.       FEMM   Programming   Manual – a guide to   MATLAB   Codes   for   FEMM.
-3.       A guidebook for   MATLAB   - “   Matlab_primer   ”.
-4.       Lab Scripts   (Part   A   and   Part   B)   as   asupplementary   guidebook.
-Case   3A   FEA   modelling   of   the   ferromagnetic   actuator. 
-Build   a   Finite   Element Analysis   (FEA)   model of a   linear ferromagnetic actuator. The   schematic   view   is shown   as   below. The   specifications can   be found   in the   EMLab file:   named “coil1p”, “coil2p”, “coil3p”, “coil4p”, “corep”,   and “   moverp”.   Lab Script. “   Part A”   can   be   used   as a detailed guidebook to assist your   FEA   modelling   based   on   FEMM software.   In order   to support your   learning of the   FEA   modelling technique, two tutorial sessions will   be   provided:
-(1) Tutorial   1 –   Introduction   of   FEA   modelling technique   based on   FEMM software.
-(2) Tutorial   2 –   How to   use   MATLAB code to assist   FEMM   modelling   (including   how to   use   the   Programming   Manual to search for suitable   MATLAB codes   for   FEMM   modelling).
+EENG20005 Electrical Energy Conversion and Supply
+Coursework Script
+Part 2 DC/AC Power Conversion
+Summary
+Design, build and evaluate an AC/DC/AC power conversion system for variable speed drive applications sourced by the mains.
+Learning outcomes
+ RMS and average value
+ Pulse Width Modulation
+o Principles and implementation
+o Quantities to vary
+ Ideal vs. semiconductor switches
+o Gate signals
+ Measure FFT harmonics
+o Understand fundamental frequency and switching frequency harmonics
+o Impact and source of low-order harmonics to the grid
+ Rectifier and inverter circuits
+o Power electronics vs. ideal AC sources
+o Single-phase vs. three-phase versions
+ Sizing and impact of filters
+ Muti-quadrant operation
+Tools
+Simulink Simscape Power Systems
+ Part1_Part2_library.slx
+ Part2_template.slx
+ Part2_template_3_ph.slx
+FFT analyser
+Case 2A Single-phase full-wave diode bridge rectifier
+Build a single-phase full-wave passive rectifier in a Simulink model following the system specifications mimicking a DC load drawing power from the mains. Add a resistive load R.
+Mains voltage                                Vmains                            380 Vrms, 50 Hz
+Load                                                                   R                                                       10 Ω
+Task 2.1
+Draw a circuit diagram of a single-phase rectifier and describe its mechanism. Calculate the average (mean) value of the rectified voltage waveform. analytically and validate through simulation.
+Task 2.2
+Add in and design a DC filtering capacitor to suppress the peak-to-peak voltage ripple to 4% of the average through iterations (trial and error) in Simulation startnig from 1 μF. What is the capacitance value C yielded in your design? Show a waveform. comparison of the DC-link voltage waveform. before/after the filtering.
+What happens to the average DC-link voltage if the capacitor was bigger/smaller?
+Change the load R to 5 Ω, what happens to the voltage ripple and average value? Explain the differences.
+Task 2.3
+Observe and describe the AC input current. Perform. Fast Fourier Transform. (FFT) analysis on this current and comment on the harmonics.
+Case 2B Single-phase half bridge inverter with passive load
+Build a single-phase half-bridge inverter with ideal switches and a passive RL load connected back to the dc-link neutral point (ground). This assumes an ideal dc-link with a fixed neutral point voltage (emulating two modular baƩ ery packs in series with a mid-point tab). Follow the below specifications mimicking the powertrain of an Electric Vehicle.
 
-Fig.   1: Schematic of concentrated   and distributed   e-machine   windings   with   round   and rectangular conductors.
+Task 2.4
+Draw a circuit diagram of a single-phase two-switch inverter with and RL load and describe its operating mechanism. Build the PWM block using a comparator and sine/triangular wave sources to control the half bridge. Provide proof of a working system (e.g. load voltage and current).
+Measure the RMS value the converter output voltage (between the output node of the half-bridge and ground) and the load current. What is the difference between RMS and true RMS in this case?
+Task 2.5
+Change the value of the filter inductance to achieve a peak-to-peak load current ripple (near the top of the quasi-sinewave) of less than 10A through iterations (trial and error) in simulation. What is the inductance value?
 
-Fig.2: A draft   FEMM   model - “   Draft_construct_actuator   ” will   be   provided   as shown   above.
-Task 3.1
-Open the   incomplete   FEA   model   (FEMM   model) “   Draft_construct_actuator   ”, go through the   MATLAB codes for the   FEMM draft   model which   is   currently   incomplete.   You   will   need   to build the   rest of the   FEA   model   (FEMM   model)   and   complete the   model   before   proceeding   with the   rest of   the   tasks. 
-The   learning   materials and   resources   provided,   including “   Programming   Manual   Book”   and         “   Lab Scripts -   Part A and   Part   B”, will   assist   you   in   completing   the   build   of the   model.   The   lab   scripts   provided   also give   instruction on   building the sections   of   model that   have   already been   provided.   It   is   recommended that you   read the   lab script. to   understand   how   FEMM   modelling works.
-Task 3.2 
-In your technical   report, show the completed   FEMM   model,   its   mesh   result   plot,   number of   elements after the   mesh, and describe    discuss these   results   briefly.
-Case   3B   Analytical   modelling   of   the   ferromagnetic   actuator. 
-Build 代 写EENG20005 Coursework Script Part 3. Ferromagnetic ActuatorMatlab
-代做程序编程语言  an   analytical   model   of the same ferromagnetic actuator   based   on   its   Magnetic   Equivalent circuit.   Below   are some suggested tasks to   help   complete   the   task   3.2.
-Task 3.3 
-Draw the circuit diagram of the magnetic equivalent circuit of the ferromagnetic actuator. Calculate the magnetic reluctance (R) of each component and the total magnetic reluctance of the actuator (∑R).
-Task 3.4 
-Work out the analytical equation of the inductance of the ferromagnetic actuator. Note: The airgap will change when the “mover” iron core moves linearly (forwards or backwards). Discuss how the inductance changes when the airgap changes. If there is any assumption in your analytical equation of inductance, please describe and justify it or explain how the assumption(s) impact the accuracy of the inductance equation.
-Task 3.5 
-Write a MATLAB code to present the analytical equation of the inductance of the ferromagnetic actuator in Task 3.4. These codes can be used to calculate the inductance quickly through code rather than hand-written calculation, especially when the airgap changes (i.e.,the airgap has a set of different values when the “mover” iron core moves).
-Case   3C   Calculating   the   inductance   of   the   ferromagnetic   actuator. 
-Calculate the   inductance of the ferromagnetic actuator   by   using   both FEA technique (Case 3A) and analytical methods (Case   3B).
-Task 3.6 
-Calculate the inductance values of the ferromagnetic actuator when the airgap increases from 0.1mm to 5.0 mm with a step of 0.1mm, using the analytical modelling method in Case 3B.
-In your technical report, show the plot of inductance with the airgap on the x-axis and the inductance on the y-axis. Discuss the inductance results and the plot.
-Task 3.7 
-FEA techniques (FEMM model) can help simulate and calculate many useful results. Among these results, flux linkage (Ψ) and winding current (I) are useful for calculating the inductance of the actuator.
-In your technical report, please write down the equation showing the relation of the inductance of the actuator with the flux linkage (Ψ) and winding current (I).
-Task 3.8 
-Calculate the inductance values of the ferromagnetic actuator when the airgap increases from 0.1mm to 5.0 mm with a step of 0.1mm, using the FEA (FEMM) modelling method in Case 3A. Show a plot of the same (airgap on the x-axis, inductance on the y-axis). To make a good comparison with analytical calculation results, it is recommended that the inductance values of the ferromagnetic actuator are calculated when the airgap increases from 0.1mm to 5.0 mm with the same step of 0.1mm.
-Task 3.9 
-Are there are any assumptions or limitations in your analytical method and FEA numerical method? Explain how the assumption(s) impact the accuracy of the inductance results.
-Case 3D Calculate the electromagnetic force of the ferromagnetic actuator. 
-Calculate the electromagnetic force based on energy methods. Use both methods: FEA technique based on FEMM and Analytical Methods based on MATLAB codes.
-Task 3.10 
-Explain the energy balance law and how the energy methods are used to calculate the electromagnetic force of the linear ferromagnetic actuator. Show the equations to aid your explanations.
-Task 3.11 
-Plot the Ψ − I curves of the ferromagnetic actuator. By using the Ψ − I curves, calculate the energy, such as electrical energy and magnetic energy. Both FEA methods and analytical methods should be used in this task. You can provide a comparison of the results obtained through both methods.
-Task 3.12 (Advanced Task) 
-Calculate the electromagnetic force   based on   energy   methods as   descripted   in   task   3.10   and   the   Ψ − I curve   in task 3.11.   Plot   the   force-airgap   curve   to   show   how   the   force   changes   with      the   airgap.   Discuss the   results.   Note that   both   FEA   methods and analytical   methods should be   used   in this task. 
+
+Before and after changing the inductance value, perform. and plot FFT on the load current - observe and explain the difference.
+Task 2.6
+Reduce the output voltage RMS to 80V (Spec. 1)/160V (Spec. 2) by changing the modulati代 写EENG20005 Electrical Energy Conversion and Supply Part 2 DC/AC Power ConversionMatlab
+代做程序编程语言on index. Use the original L value. Work out how much the modulation index should be analytically. Validate the design in Simulation.
+Compare the performance against an equivalent AC source.
+Task 2.7
+Change the fundamental frequency of the converter output voltage to 100 Hz (Spec. 1)/200 Hz (Spec. 2) in simulation. Demonstrate how and show proof. In real applications, when/why should we change the fundamental frequency?
+Task 2.8
+Show how to change the switching frequency to 5 kHz while keeping fundamental frequency at 50Hz(Spec. 1)/100 Hz (Spec.2) and the modulation index at 0.8. What happens to the converter output voltage and load current?
+To achieve the same current ripple level as Task 2.5 (i.e. ∆Ipk-pk   = 10 A), what value should the L be now? How does the FFT on the load current change compared to Task 2.5?
+Task 2.9
+Replace ideal switches with IGBT + anti-parallel diodes. What happens if the diodes are removed? Explain what you observe. (hint: observe the current in the anti-paralleled diodes). Set the carrier wave frequency to 5 kHz, and use the L value yielded in Task 2.8.
+Task 2.10
+Observe the load voltage/current and the apparent power. Demonstrate the multi-quadrant operation of the converter-load system. Please do this with the IGBT and anti-parallel diodes. In what scenario would the converter operate beyond the First Quadrant?
+Case 2C (advanced task) Single-phase full bridge inverter
+Convert the single-phase version Case 2B into a single-phase full bridge (H-bridge) inverter. Use either ideal switches or IGBT+Diode. Design and build the PWM block for the single-phase H-bridge inverter.
+Task 2.11
+Show a circuit diagram of the whole system. Mark any voltage/current quantities that you may refer to later. Show a ‘truth table’ of the switching states of the full bridge.
+Show proof of the working system in simulation – e.g. converter output voltage and load current.
+Task 2.12
+Compare the H-bridge against the half-bridge in Case 2B – what are the pros and cons of each system? Explain why an H-bridge inverter has a better DC-link utilization or an extended range of output voltage amplitude. Provide waveforms as necessary for comparison.
+Task 2.13
+Join the diode rectifier in Case 2A and the H-bridge inverter together to mimic a variable frequency drive drawing power from the grid/mains. The ideal DC source is replaced by the diode rectifier and a buffering capacitor in this case. Show a circuit diagram of this case. 9 Show proof of the working system in simulation. Explain and demonstrate the differences between an ideal DC source and a diode rectifier bridge.
+Case 2D (advanced task) Three-phase half bridge inverter with passive load
+Convert the single-phase version Case 2C into a three-phase version mimicking a drivetrain for electric vehicles with passive RL loads.
+Design and build a PWM block for a three-phase inverter with an initial modulation index of 0.8.
+Task 2.14
+Show a circuit diagram of the whole system and describe its mechanism. Mark any voltage/current quantities that you may refer to later.
+Show proof of the working system in simulation – e.g. phase converter output voltage, line converter output voltage, load line current.
+Compare the converter output phase voltage and line voltage waveforms and try to explain the difference on the shape difference between them.
+Task 2.15
+Monitor the three-phase output power – control the converter output real power to be 10 kW per phase through adjusting the modulation block manually. Demonstrate how and show proof.
+
+
 
 
 
